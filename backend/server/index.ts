@@ -4,7 +4,9 @@ import { HTTPException } from "hono/http-exception";
 
 import { type ErrorResponse } from "@/lib/types";
 
-
+import { authRouter } from "./routes/auth";
+import { commentsRouter } from "./routes/comments";
+import { postRouter } from "./routes/posts";
 import { audioRouter } from "./routes/audio";
 import { articleRouter } from "./routes/aritcles";
 import { tasksRouter } from "./routes/tasks";
@@ -18,6 +20,9 @@ app.use("*", cors());
 
 const routes = app
   .basePath("/api")
+  .route("/auth", authRouter)
+  .route("/posts", postRouter)
+  .route("/comments", commentsRouter)
   .route("/audios", audioRouter)
   .route("/articles", articleRouter)
   .route("/tasks", tasksRouter)

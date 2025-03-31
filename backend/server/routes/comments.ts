@@ -4,11 +4,9 @@ import { and, asc, countDistinct, desc, eq, sql } from "drizzle-orm";
 
 import { db } from "@/adapter";
 import { userTable } from "@/db/schemas/auth";
-// import { type Context } from "@/context";
 import { commentsTable } from "@/db/schemas/comments";
 import { postsTable } from "@/db/schemas/posts";
 import { commentUpvotesTable } from "@/db/schemas/upvotes";
-// import { loggedIn } from "@/middleware/loggedIn";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 

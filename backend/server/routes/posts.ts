@@ -69,20 +69,6 @@ export const postRouter = new Hono()
   .get("/", zValidator("query", paginationSchema), async (c) => {
     const { limit, page, sortBy, order, author, site, userId } =
       c.req.valid("query");
-    // const user = c.get("user");
-
-    // const [existingUser] = await db
-    // .select()
-    // .from(userTable)
-    // .where(eq(userTable.id, userId))
-    // .limit(1);
-
-    // if (!existingUser) {
-    //   throw new HTTPException(401, {
-    //     message: "user doesn't exist",
-    //     cause: { form: true },
-    //   });
-    // }
 
     const offset = (page - 1) * limit;
 
@@ -168,8 +154,7 @@ export const postRouter = new Hono()
     ),
     async (c) => {
       const { id, userId } = c.req.valid("param");
-      // const user = c.get("user")!;
-      // const { userId } = c.req.valid("json");
+
       let pointsChange: -1 | 1 = 1;
 
       const points = await db.transaction(async (tx) => {

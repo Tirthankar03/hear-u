@@ -6,6 +6,8 @@ import { commentsTable } from "./comments";
 
 import { postsTable } from "./posts";
 import { commentUpvotesTable, postUpvotesTable } from "./upvotes";
+import { sessionTable } from "./sessions";
+import { chatTable } from "./chats";
 
 export const userTable = pgTable("user", {
   id: text("id").primaryKey(),
@@ -39,4 +41,8 @@ export const userRelations = relations(userTable, ({ many }) => ({
   commentUpvotes: many(commentUpvotesTable, {
     relationName: "commentUpvotes",
   }),
+  sessions: many(sessionTable),
+  chatsAsUser1: many(chatTable, { relationName: "user1_chats" }),
+  chatsAsUser2: many(chatTable, { relationName: "user2_chats" }),
 }));
+
